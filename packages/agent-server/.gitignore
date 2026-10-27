@@ -1,0 +1,7 @@
+/target/
+/bin/
+/.tmp/
+/.workspaces/
+.env
+.env.*
+

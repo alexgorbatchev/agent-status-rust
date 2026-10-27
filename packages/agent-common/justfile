@@ -1,0 +1,23 @@
+default:
+    @just --list
+
+build:
+    cargo build --package agent-common --all-targets
+
+test:
+    mkdir -p .tmp
+    cargo test --package agent-common --all-targets
+    cargo test --package agent-common --doc
+
+fmt:
+    cargo fmt --package agent-common
+
+lint:
+    cargo fmt --package agent-common -- --check
+    cargo clippy --package agent-common --all-targets -- -D warnings
+
+coverage:
+    mkdir -p .tmp
+    cargo llvm-cov --package agent-common --all-targets --fail-under-lines 90
+
+check: lint test coverage

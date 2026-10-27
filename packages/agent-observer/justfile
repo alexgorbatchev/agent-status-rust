@@ -1,0 +1,27 @@
+default:
+    @just --list
+
+run *args:
+    cargo run --package agent-observer --locked -- {{ args }}
+
+run-ai *args:
+    AGENT=1 cargo run --package agent-observer --locked -- {{ args }}
+
+test:
+    mkdir -p .tmp
+    cargo test --package agent-observer --locked --all-targets
+
+lint:
+    cargo fmt --package agent-observer -- --check
+    cargo clippy --package agent-observer --locked --all-targets -- -D warnings
+
+coverage:
+    mkdir -p .tmp
+    cargo llvm-cov --package agent-observer --locked --all-targets --fail-under-lines 90
+
+check: lint test coverage
+
+build:
+    cargo build --package agent-observer --locked --release
+    mkdir -p bin
+    cp "$(cargo metadata --locked --offline --format-version 1 --no-deps | jq -r .target_directory)/release/agent-observer" bin/agent-observer

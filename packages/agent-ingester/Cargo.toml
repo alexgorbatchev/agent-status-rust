@@ -1,0 +1,40 @@
+[package]
+name = "agent-ingester"
+version = "0.1.0"
+edition = "2024"
+license = "MIT"
+description = "Agent telemetry classification, durable ingestion, and notifications"
+
+[dependencies]
+agent-common = { path = "../agent-common" }
+agent-status-store = { path = "../agent-status-store" }
+agent-watcher = { path = "../../../agent-watcher" }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+thiserror = "2"
+tokio = { version = "1", features = ["full", "test-util"] }
+tokio-util = {version="0.7",features=["rt"]}
+genai = "0.6.5"
+reqwest = { version = "0.13", default-features = false, features = ["json", "rustls", "system-proxy"] }
+url = "2"
+rand = "0.10"
+rusqlite = { version = "0.39", features = ["bundled"] }
+tracing = "0.1"
+path-clean = "1"
+axum = { version = "0.8", features = ["ws"] }
+subtle = "2"
+clap = { version = "4", features = ["string"] }
+clap_complete = "4"
+cli-command-kit = {path="../../../cli-command-kit"}
+go-duration = "0.2"
+dirs = "7"
+hostname = "0.4"
+hyper = {version="1",features=["server","http1"]}
+hyper-util = {version="0.1",features=["tokio","service"]}
+socket2 = "0.6"
+
+[dev-dependencies]
+tempfile = "3"
+tokio-tungstenite = "0.29"
+futures-util = "0.3"
+

@@ -1,0 +1,12 @@
+/target/
+/.tmp/
+/.cache/
+/.codegraph/
+/.pi-subagents/
+/.workspaces/
+/packages/*/bin/
+/packages/*/.tmp/
+*.sqlite-wal
+*.sqlite-shm
+*.db-wal
+*.db-shm

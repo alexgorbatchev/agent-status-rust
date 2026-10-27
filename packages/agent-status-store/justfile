@@ -1,0 +1,20 @@
+default:
+    @just --list
+
+test:
+    mkdir -p .tmp
+    cargo test --package agent-status-store --locked --all-targets
+    cargo test --package agent-status-store --locked --doc
+
+lint:
+    cargo fmt --package agent-status-store -- --check
+    cargo clippy --package agent-status-store --locked --all-targets -- -D warnings
+
+coverage:
+    mkdir -p .tmp
+    cargo llvm-cov --package agent-status-store --locked --all-targets --fail-under-lines 90
+
+check: lint test coverage
+
+build:
+    cargo build --package agent-status-store --locked --release

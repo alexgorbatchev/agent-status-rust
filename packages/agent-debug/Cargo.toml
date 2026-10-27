@@ -1,0 +1,40 @@
+[package]
+name = "agent-debug"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.95"
+license = "MIT"
+description = "Offline Agent Status replay, validation, and inspection"
+
+[dependencies]
+agent-common = { path = "../agent-common" }
+agent-parser = { path = "../../../agent-parser" }
+agent-status-store = { path = "../agent-status-store" }
+agent-ingester = { path = "../agent-ingester" }
+agent-observer = { path = "../agent-observer" }
+agent-watcher = { path = "../../../agent-watcher" }
+cli-command-kit = { path = "../../../cli-command-kit" }
+chrono = { version = "0.4", features = ["serde"] }
+clap = { version = "4", features = ["string"] }
+clap_complete = "4"
+dirs = "7"
+reqwest = { version = "0.13", default-features = false, features = ["rustls", "system-proxy", "json"] }
+rusqlite = { version = "0.39", features = ["bundled", "hooks"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+thiserror = "2"
+tokio = { version = "1", features = ["full"] }
+tokio-util = { version = "0.7", features = ["rt"] }
+tracing = "0.1"
+url = "2"
+unicode-segmentation = "1"
+unicode-width = "0.2"
+path-clean = "1"
+regex = "1"
+comfy-table = { version = "8", default-features = false }
+sysinfo = { version = "0.39.6", default-features = false, features = ["system"] }
+
+[dev-dependencies]
+tempfile = "3"
+axum = "0.8"
+

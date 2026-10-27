@@ -1,0 +1,16 @@
+[package]
+name = "agent-status-store"
+version = "0.1.0"
+edition = "2024"
+license = "MIT"
+description = "Native transactional SQLite storage for agent telemetry and dashboard queries"
+
+[dependencies]
+agent-common = { path = "../agent-common" }
+rusqlite = { version = "0.39", features = ["bundled"] }
+serde_json = "1"
+serde = "1"
+thiserror = "2"
+
+[dev-dependencies]
+tempfile = "3"

@@ -1,0 +1,27 @@
+default:
+    @just --list
+
+test:
+    mkdir -p .tmp
+    cargo test --package agent-ingester --locked --all-targets
+
+lint:
+    cargo fmt --package agent-ingester -- --check
+    cargo clippy --package agent-ingester --locked --all-targets -- -D warnings
+
+coverage:
+    mkdir -p .tmp
+    cargo llvm-cov --package agent-ingester --locked --all-targets --fail-under-lines 90
+
+check: lint test coverage
+
+build:
+    cargo build --package agent-ingester --locked --release
+    mkdir -p bin
+    cp "$(cargo metadata --locked --offline --format-version 1 --no-deps | jq -r .target_directory)/release/agent-ingester" bin/agent-ingester
+
+run *args:
+    cargo run --package agent-ingester --locked -- {{ args }}
+
+run-ai *args:
+    AGENT=1 cargo run --package agent-ingester --locked -- {{ args }}

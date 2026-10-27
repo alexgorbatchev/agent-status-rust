@@ -1,0 +1,28 @@
+default:
+    @just --list
+
+test:
+    mkdir -p .tmp
+    cargo test --package agent-debug --locked --all-targets
+    cargo test --package agent-debug --locked --doc
+
+lint:
+    cargo fmt --package agent-debug -- --check
+    cargo clippy --package agent-debug --locked --all-targets -- -D warnings
+
+coverage:
+    mkdir -p .tmp
+    cargo llvm-cov --package agent-debug --locked --all-targets --fail-under-lines 90
+
+check: lint test coverage
+
+build:
+    cargo build --package agent-debug --locked --release
+    mkdir -p bin
+    cp "$(cargo metadata --locked --offline --format-version 1 --no-deps | jq -r .target_directory)/release/agent-debug" bin/agent-debug
+
+run *args:
+    cargo run --package agent-debug --locked -- {{ args }}
+
+run-ai *args:
+    AGENT=1 cargo run --package agent-debug --locked -- {{ args }}
