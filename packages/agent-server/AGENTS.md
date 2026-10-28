@@ -15,7 +15,7 @@ Serve read-only Agent Status queries and forward explicit mutations to the inges
 - Coverage and full checks: `just check`.
 - Release executable: `just build`, producing `bin/agent-server`.
 - Run: `just run --addr 127.0.0.1:4502`; compact mode: `just run-ai --addr 127.0.0.1:4502`.
-- Rust development needs the workspace packages `agent-common` and `agent-status-store`, and the standalone sibling `cli-command-kit` project and the LLVM tools required by cargo-llvm-cov. Consult the parent instructions before compiling or cleaning artifacts.
+- Rust development needs the workspace packages `agent-common` and `agent-status-store`, the revision-pinned `cli-command-kit` Git dependency, and the LLVM tools required by cargo-llvm-cov. Consult the parent instructions before compiling or cleaning artifacts.
 
 ## Contracts
 
@@ -35,5 +35,5 @@ Serve read-only Agent Status queries and forward explicit mutations to the inges
 - Record a behavioral failure, implement the correction, and temporarily disable it to prove the regression fails before restoring it.
 - Use real local HTTP, WebSocket, Unix socket, subprocess, and database boundaries. Bound failure waits and isolate test environment directories under `.tmp/`.
 - Never use live Agent Status services or unrelated credentials for tests. Never publish releases, tags, packages, or deployments without explicit user authorization.
-- Keep source, evidence, delivered binaries, and lockfiles during reviewed artifact cleanup. Scope formatting to this package; `cargo fmt --all` visits sibling path dependencies.
+- Keep source, evidence, delivered binaries, and lockfiles during reviewed artifact cleanup. Scope formatting to this package.
 - Persist only standing project rules here, updating them in place. Keep progress, handoffs, and test reports in `.tmp/`.

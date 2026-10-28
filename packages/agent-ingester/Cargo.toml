@@ -8,7 +8,7 @@ description = "Agent telemetry classification, durable ingestion, and notificati
 [dependencies]
 agent-common = { path = "../agent-common" }
 agent-status-store = { path = "../agent-status-store" }
-agent-watcher = { path = "../../../agent-watcher" }
+agent-watcher = { git = "https://github.com/alexgorbatchev/agent-watcher-rust.git", rev = "9c7532c9950c6fd188374e8ff7266480c558ab7c" }
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
 thiserror = "2"
@@ -25,7 +25,7 @@ axum = { version = "0.8", features = ["ws"] }
 subtle = "2"
 clap = { version = "4", features = ["string"] }
 clap_complete = "4"
-cli-command-kit = {path="../../../cli-command-kit"}
+cli-command-kit = {git = "https://github.com/alexgorbatchev/cli-command-kit-rust.git", rev = "40210e689762f6606776764bb3696e2685198c2e"}
 go-duration = "0.2"
 dirs = "7"
 hostname = "0.4"

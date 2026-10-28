@@ -8,12 +8,12 @@ description = "Offline Agent Status replay, validation, and inspection"
 
 [dependencies]
 agent-common = { path = "../agent-common" }
-agent-parser = { path = "../../../agent-parser" }
+agent-parser = { git = "https://github.com/alexgorbatchev/agent-parser-rust.git", rev = "2c013b856c26ec215120a2c39973e16381c645dc" }
 agent-status-store = { path = "../agent-status-store" }
 agent-ingester = { path = "../agent-ingester" }
 agent-observer = { path = "../agent-observer" }
-agent-watcher = { path = "../../../agent-watcher" }
-cli-command-kit = { path = "../../../cli-command-kit" }
+agent-watcher = { git = "https://github.com/alexgorbatchev/agent-watcher-rust.git", rev = "9c7532c9950c6fd188374e8ff7266480c558ab7c" }
+cli-command-kit = { git = "https://github.com/alexgorbatchev/cli-command-kit-rust.git", rev = "40210e689762f6606776764bb3696e2685198c2e" }
 chrono = { version = "0.4", features = ["serde"] }
 clap = { version = "4", features = ["string"] }
 clap_complete = "4"

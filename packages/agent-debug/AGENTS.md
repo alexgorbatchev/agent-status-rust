@@ -14,7 +14,7 @@ Offline diagnostics for Agent Status telemetry, with explicit remote read and su
 - `just build`: optimized executable at `bin/agent-debug`.
 - `just run <args>` / `just run-ai <args>`: human / agent mode.
 - Rust 1.95 or newer is required by resolved dependencies. Consult `Cargo.lock` before changing the minimum version.
-- Scope formatters to this package; `cargo fmt --all` can modify sibling path dependencies.
+- Scope formatters to this package.
 
 ## Contracts
 
@@ -34,4 +34,4 @@ Offline diagnostics for Agent Status telemetry, with explicit remote read and su
 
 ## Provenance
 
-The source contract is `alexgorbatchev/agent-status`, package `agent-debug`. The source checkout contains no license file; this workspace uses the cli-best-practices skill's mandatory MIT default with Alex Gorbatchev attribution. Shared Agent Status behavior resides in workspace packages; `agent-parser`, `agent-watcher`, and `cli-command-kit` remain standalone sibling repositories.
+The source contract is `alexgorbatchev/agent-status`, package `agent-debug`. The source checkout contains no license file; this workspace uses the cli-best-practices skill's mandatory MIT default with Alex Gorbatchev attribution. Shared Agent Status behavior resides in workspace packages; `agent-parser`, `agent-watcher`, and `cli-command-kit` resolve from pinned GitHub revisions.

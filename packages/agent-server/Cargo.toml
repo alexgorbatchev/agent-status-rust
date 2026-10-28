@@ -9,7 +9,7 @@ description = "Read-only Agent Status queries and live event streams"
 [dependencies]
 agent-common = { path = "../agent-common" }
 agent-status-store = { path = "../agent-status-store" }
-cli-command-kit = { path = "../../../cli-command-kit" }
+cli-command-kit = { git = "https://github.com/alexgorbatchev/cli-command-kit-rust.git", rev = "40210e689762f6606776764bb3696e2685198c2e" }
 axum = { version = "0.8", features = ["ws"] }
 clap = { version = "4", features = ["string"] }
 clap_complete = "4"
